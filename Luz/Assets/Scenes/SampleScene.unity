@@ -555,7 +555,6 @@ GameObject:
   - component: {fileID: 241138557}
   - component: {fileID: 241138556}
   - component: {fileID: 241138555}
-  - component: {fileID: 241138559}
   m_Layer: 6
   m_Name: ChaoGrande
   m_TagString: Untagged
@@ -649,18 +648,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 686301503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &241138559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241138554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e40e4744007ee4c8a371306640620f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &283258067
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +802,7 @@ PrefabInstance:
     - target: {fileID: 6081134707340202345, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9659258
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 6081134707340202345, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
@@ -830,12 +817,12 @@ PrefabInstance:
     - target: {fileID: 6081134707340202345, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2588191
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 6081134707340202345, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 30
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 6631372960381999330, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
@@ -2036,7 +2023,7 @@ GameObject:
   - component: {fileID: 1501823112}
   - component: {fileID: 1501823111}
   m_Layer: 7
-  m_Name: Porta (3)
+  m_Name: Botao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2246,6 +2233,7 @@ GameObject:
   - component: {fileID: 1598989082}
   - component: {fileID: 1598989085}
   - component: {fileID: 1598989086}
+  - component: {fileID: 1598989087}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -2274,8 +2262,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c4dd62c56e9326a479d87b5d27ff1ac5, type: 2}
-  - {fileID: 2100000, guid: c4dd62c56e9326a479d87b5d27ff1ac5, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2296,7 +2283,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 5
+  m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -6087,7 +6074,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 192
+      m_Bits: 128
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -6095,24 +6082,28 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
-    exit: 0
-    colliderQueryMode: 0
+    enter: 2
+    exit: 2
+    colliderQueryMode: 2
     radiusScale: 1
     primitives:
     - {fileID: 241138558}
     - {fileID: 1808814304}
+    - {fileID: 155870724}
+    - {fileID: 1785627063}
+    - {fileID: 111841751}
+    - {fileID: 153497915}
   SubModule:
     serializedVersion: 2
     enabled: 0
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 0}
-      type: 3
+      type: 1
       properties: -1
       emitProbability: 1
   LightsModule:
@@ -6231,7 +6222,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 1
+    enabled: 0
     mode: 0
     ratio: 1
     lifetime:
@@ -7096,6 +7087,19 @@ MonoBehaviour:
   extraDistance: 0
   retry: 10
   retryRange: {x: 0, y: 0, z: 0}
+--- !u!114 &1598989087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598989081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e40e4744007ee4c8a371306640620f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensores: []
 --- !u!1 &1785627059
 GameObject:
   m_ObjectHideFlags: 0

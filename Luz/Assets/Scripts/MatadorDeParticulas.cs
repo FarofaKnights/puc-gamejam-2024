@@ -3,49 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MatadorDeParticulas : MonoBehaviour {
+    ParticleSystem ps;
 
-    private void OnParticleCollision(GameObject other)
+    List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
+
+    public Collider[] sensores;
+
+    void OnEnable()
     {
-        // Destroy the particle
-            ParticleSystem ps = other.GetComponent<ParticleSystem>();
-            if (ps == null)
-            {
-                return;
-            }
-            Debug.Log("aaaaaaa");
-            ParticleCollisionEvent[] collisionEvents = new ParticleCollisionEvent[ps.GetSafeCollisionEventSize()];
-            int numCollisionEvents = ps.GetCollisionEvents(other, collisionEvents);
-
-            for (int i = 0; i < numCollisionEvents; i++)
-            {
-                // Destroy the particle on collision with the plane
-                DestroyParticle(other, collisionEvents[i].intersection);
-            }
+        ps = GetComponent<ParticleSystem>();
     }
 
-    private void DestroyParticle(GameObject other, Vector3 position)
-{
-    // Find the particle system component
-    ParticleSystem ps = other.GetComponent<ParticleSystem>();
-
-    // Get the particles from the particle system
-    ParticleSystem.Particle[] particles = new ParticleSystem.Particle[ps.particleCount];
-    int numParticles = ps.GetParticles(particles);
-
-    // Loop through each particle
-    for (int i = 0; i < numParticles; i++)
+    void OnParticleTrigger()
     {
-        // Check if the particle's position is close to the collision point
-        if (Vector3.Distance(particles[i].position, position) < 0.1f)
-        {
-            // Destroy the particle
-            particles[i].remainingLifetime = 0f; // Set remaining lifetime to zero to destroy the particle
+        // Get all particles of particle system
+        ParticleSystem.Particle[] todas = new ParticleSystem.Particle[ps.particleCount];
+        int numParticlesAlive = ps.GetParticles(todas);
+        List<ParticleSystem.Particle> todasList = new List<ParticleSystem.Particle>();
+
+        int numEnter = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter, out var insideData);
+
+        // iterate through the particles which entered the trigger and make them red
+        for (int i = 0; i < numEnter; i++) {
+            ParticleSystem.Particle p = enter[i];
+
+            for (int j = 0; j < numParticlesAlive; j++) {
+                if (todas[j].position == p.position) {
+                    bool found = false;
+                    for (int k = 0; k < sensores.Length; k++) {
+                        if (sensores[k].bounds.Contains(todas[j].position)) {
+                            found = true;
+                        }
+                    }
+
+                    if (!found)
+                        todas[j].remainingLifetime = 0;
+                }
+            }
         }
+
+        ps.SetParticles(todas, todas.Length);
     }
-
-    // Apply the modified particles back to the particle system
-    ps.SetParticles(particles, numParticles);
-}
-
-
 }
