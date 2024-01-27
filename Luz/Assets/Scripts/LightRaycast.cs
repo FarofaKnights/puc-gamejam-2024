@@ -36,25 +36,12 @@ public class LightRaycast : MonoBehaviour {
 
     void CalculaRay(Vector3 pos, Vector3 dir, List<Vector3> hitPositions, int iteration = 0) {
         RaycastHit hit;
-
-        // Check for triggers
-        if (Physics.Raycast(pos, dir, out hit, maxRayDistance, lightReceptorLayers)) {
-            Debug.DrawRay(pos, dir * hit.distance, Color.red);
-            GameObject lightReceptor = hit.collider.gameObject;
-
-            if (lightReceptor.tag == "Receptor") {
-                LightActivated l = lightReceptor.GetComponent<LightActivated>();
-                if (receptoresAtivos.Contains(l))
-                    receptoresAtivos.Remove(l);
-
-                l.Ativar();
-            }
-        }
-
+        float dist = -1f;
         // Check for collisions
         if (Physics.Raycast(pos, dir, out hit, maxRayDistance, lightInteractLayers)) {
             Debug.DrawRay(pos, dir * hit.distance, Color.yellow);
             GameObject lightReceptor = hit.collider.gameObject;
+            dist = hit.distance;
 
             hitPositions.Add(hit.point);
 
@@ -64,6 +51,25 @@ public class LightRaycast : MonoBehaviour {
                 case "Reflect":
                     CalculaRay(hit.point, Vector3.Reflect(dir, hit.normal), hitPositions, iteration + 1);
                     break;
+            }
+        } else {
+            Debug.DrawRay(pos, dir * maxRayDistance, Color.green);
+            hitPositions.Add(pos + dir * maxRayDistance);
+        }
+
+        // Check for triggers
+        if (dist == -1f) dist = maxRayDistance;
+        RaycastHit[] hits = Physics.RaycastAll(pos, dir, dist, lightReceptorLayers);
+        foreach (RaycastHit hitt in hits) {
+            Debug.DrawRay(pos, dir * hitt.distance, Color.red);
+            GameObject lightReceptor = hitt.collider.gameObject;
+
+            if (lightReceptor.tag == "Receptor") {
+                LightActivated l = lightReceptor.GetComponent<LightActivated>();
+                if (receptoresAtivos.Contains(l))
+                    receptoresAtivos.Remove(l);
+
+                l.Ativar();
             }
         }
     }

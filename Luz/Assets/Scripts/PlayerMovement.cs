@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour {
         if (controller.isGrounded) {
             if (jumping) jumping = false;
 
-            if (Input.GetButton(CurrentPlayer() + "_Jump")) {
+            if (Input.GetButton(CurrentPlayer() + "_Jump" + UsingAlt())) {
                 moveDirection.y = jumpForce;
                 jumping = true;
             }
