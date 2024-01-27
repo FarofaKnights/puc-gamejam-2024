@@ -8,10 +8,11 @@ public class PlayerMovement : MonoBehaviour {
     public Player player = Player.One;
     public bool usingAlt = false;
 
-    public float walkSpeed = 7f, runSpeed = 12f;
+    public float walkSpeed = 7f, slowSpeed = 1.25f;
     public float jumpForce = 10f, gravity = 10f;
     CharacterController controller;
     bool jumping = false;
+    public bool isSlow = false;
 
     Vector3 moveDirection;
 
@@ -28,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update() {
-        float moveSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+        float moveSpeed = isSlow ? slowSpeed : walkSpeed;
         float hAxis = Input.GetAxis(CurrentPlayer() + "_Horizontal" + UsingAlt()) * moveSpeed;
         float vAxis = 0;
 
@@ -44,6 +45,10 @@ public class PlayerMovement : MonoBehaviour {
             if (jumping) jumping = false;
 
             if (Input.GetButton(CurrentPlayer() + "_Jump" + UsingAlt())) {
+                if (GetComponent<BoxPusher>().box != null) {
+                    GetComponent<BoxPusher>().Soltar();
+                }
+
                 moveDirection.y = jumpForce;
                 jumping = true;
             }

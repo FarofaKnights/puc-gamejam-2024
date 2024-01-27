@@ -3,20 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BoxPusher : MonoBehaviour {
+    public LayerMask mexiveisLayer;
+    public float interactRadius = 1.25f;
     public float pushPower = 2.0f;
-   void OnControllerColliderHit(ControllerColliderHit hit) {
-       if (hit.gameObject.tag == "Box") {
-           Rigidbody body = hit.collider.attachedRigidbody;
-           if (body == null || body.isKinematic) {
-               return;
-           }
-/*
-           if (hit.moveDirection.y < -0.3f) {
-               return;
-           }
-*/
-           Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-           body.velocity = pushDir * pushPower;
-       }
-   }
+
+    public GameObject box;
+    public GameObject mao;
+
+    void Update() {
+        if (box == null && Input.GetKeyDown(KeyCode.LeftShift)) {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactRadius, mexiveisLayer);
+            if (hitColliders.Length > 0 && hitColliders[0].gameObject.tag == "Box") {
+                box = hitColliders[0].gameObject;
+                box.transform.parent = mao.transform;
+                GetComponent<PlayerMovement>().isSlow = true;
+            }
+        }
+
+        if (box != null && Input.GetKeyUp(KeyCode.LeftShift)) {
+            Soltar();
+        }
+    }
+
+    public void Soltar() {
+        if (box != null) {
+            box.transform.parent = null;
+            box = null;
+            GetComponent<PlayerMovement>().isSlow = false;
+        }
+    }
 }

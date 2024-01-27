@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BoxMexer : MonoBehaviour {
     public LayerMask mexiveisLayer;
+    public float interactRadius = 1.25f;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f, mexiveisLayer);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactRadius, mexiveisLayer);
             if (hitColliders.Length > 0) {
                 hitColliders[0].GetComponent<Interagivel>().Interagir();
             }
@@ -16,6 +17,6 @@ public class BoxMexer : MonoBehaviour {
 
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 1f);
+        Gizmos.DrawWireSphere(transform.position, interactRadius);
     }
 }
