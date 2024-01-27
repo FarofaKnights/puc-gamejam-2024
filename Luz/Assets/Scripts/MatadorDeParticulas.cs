@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class MatadorDeParticulas : MonoBehaviour {
     ParticleSystem ps;
 
@@ -29,15 +30,24 @@ public class MatadorDeParticulas : MonoBehaviour {
 
             for (int j = 0; j < numParticlesAlive; j++) {
                 if (todas[j].position == p.position) {
-                    bool found = false;
+                    int id = -1;
                     for (int k = 0; k < sensores.Length; k++) {
-                        if (sensores[k].bounds.Contains(todas[j].position)) {
-                            found = true;
+                        for (int l = 0; l < insideData.GetColliderCount(k); l++) {
+                            if (insideData.GetCollider(k,l) == sensores[k].transform)
+                                id = k;
                         }
                     }
 
-                    if (!found)
+                    if (id==-1) {
                         todas[j].remainingLifetime = 0;
+                        Debug.Log("MORREU");
+                    }
+                    else if(sensores[id].gameObject.GetComponent<LightActivated>() != null) {
+                        LightActivated l = sensores[id].gameObject.GetComponent<LightActivated>();
+                        l.Ativar();
+                    }
+
+                    break;
                 }
             }
         }

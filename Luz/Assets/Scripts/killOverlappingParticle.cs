@@ -22,7 +22,7 @@ public class killOverlappingParticle : MonoBehaviour {
            //if (m_Particles[i].startLifetime - m_Particles[i].remainingLifetime < 0.05f && retry > 0) {// Unity 5.5+.
                for (int j = 0; j < numParticlesAlive; j++) {
                    if (i != j) {// Prevents the same particle compares to itself.
-                       float dist = Vector3.Distance(m_Particles[i].position, m_Particles[j].position) - m_Particles[i].size - m_Particles[j].size - extraDistance;
+                       float dist = Vector3.Distance(m_Particles[i].position, m_Particles[j].position) - m_Particles[i].GetCurrentSize(m_System) - m_Particles[j].GetCurrentSize(m_System) - extraDistance;
                        if (dist < 0) {
                            /* // Using the killing method can remove retry and r variables and the following while loop.
                            m_Particles[i].color = new Color(0,0,0,0);// Reduce alpha to zero before killing it to avoid flickering.
@@ -31,7 +31,7 @@ public class killOverlappingParticle : MonoBehaviour {
                            int r = 0;
                            while (dist < 0 && r < retry) {
                                m_Particles[i].position += new Vector3(Random.Range(-retryRange.x,retryRange.x),Random.Range(-retryRange.y,retryRange.y),Random.Range(-retryRange.z,retryRange.z));
-                               dist = Vector3.Distance(m_Particles[i].position, m_Particles[j].position) - m_Particles[i].size - m_Particles[j].size - extraDistance;
+                               dist = Vector3.Distance(m_Particles[i].position, m_Particles[j].position) - m_Particles[i].GetCurrentSize(m_System) - m_Particles[j].GetCurrentSize(m_System) - extraDistance;
                                r++;
                            }
                        }
@@ -48,7 +48,7 @@ public class killOverlappingParticle : MonoBehaviour {
        if (m_System == null)
            m_System = GetComponent<ParticleSystem>();
  
-       if (m_Particles == null || m_Particles.Length < m_System.maxParticles)
-           m_Particles = new ParticleSystem.Particle[m_System.maxParticles];
+       if (m_Particles == null || m_Particles.Length < m_System.main.maxParticles)
+           m_Particles = new ParticleSystem.Particle[m_System.main.maxParticles];
    }
 }
