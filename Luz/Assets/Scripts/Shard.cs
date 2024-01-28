@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shard : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Player")) {
+        if (other.gameObject == GameManager.instance.p2.gameObject) {
             PlayerMovement pm = other.gameObject.GetComponent<PlayerMovement>();
             if (!pm.holdingShard) {
                 pm.holdingShard = true;

@@ -33,6 +33,11 @@ public class EspelhoInteractable : MonoBehaviour, Interagivel {
 
     void OnCollisionEnter(Collision other) {
         float fall = other.relativeVelocity.y;
+        
+        if (other.gameObject.GetComponent<SafeGrounds>() != null) {
+            fall = 0;
+        }
+
         if (fall > fallToBreak) {
             GameObject shard = Instantiate(shardPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
