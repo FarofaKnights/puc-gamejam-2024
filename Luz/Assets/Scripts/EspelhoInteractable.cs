@@ -32,6 +32,7 @@ public class EspelhoInteractable : MonoBehaviour, Interagivel {
     }
 
     void OnCollisionEnter(Collision other) {
+        Debug.Log("Colidindo");
         float fall = other.relativeVelocity.y;
         
         if (other.gameObject.GetComponent<SafeGrounds>() != null) {

@@ -39,4 +39,14 @@ public class BoxPusher : MonoBehaviour {
             GetComponent<PlayerMovement>().isSlow = false;
         }
     }
+
+    public void CaixaSofreuColissao(Collision other) {
+        if (box==null) return;
+
+        // if box collides, make pusher have same velocity (if it stops them pusher stops too)
+        if (other.gameObject == box) {
+            GetComponent<CharacterController>().Move(other.relativeVelocity * Time.deltaTime);
+        }
+        
+    }
 }

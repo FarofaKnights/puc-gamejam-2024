@@ -5,6 +5,8 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour {
     public static RoomManager instance;
 
+    public int currentRoom = 0;
+
     public bool rodando = true;
 
     void Awake() {

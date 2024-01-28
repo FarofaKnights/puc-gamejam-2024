@@ -5,8 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
-    public bool arrowMode = false;
-
     public PlayerMovement p1, p2;
 
     void Start() {
@@ -14,6 +12,10 @@ public class GameManager : MonoBehaviour {
             instance = this;
         } else {
             Destroy(gameObject);
+        }
+
+        if (RoomManager.instance.currentRoom == 0) {
+            UIController.instance.ShowHaikou("Apenas um de nós pode sair daqui", UIController.HaikouType.One);
         }
     }
 }
