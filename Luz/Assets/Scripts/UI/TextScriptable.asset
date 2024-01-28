@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9c04e07feacf44cbee3ce33a7fa124, type: 3}
+  m_Name: TextScriptable
+  m_EditorClassIdentifier: 
+  texts:
+  - text: "AMATERASU\r\nVoc\xEA acha que eu preciso ser\r\nsalva? N\xE3o. A disapari\xE7\xE3o
+      do sol\r\n\xE9 minha culpa. Eu errei, e assim\r\ncondenei seu povo a fome.
+      N\xE3o h\xE1\r\nnada que eu possa fazer para\r\nconcertar meu erro. Volte.
+      Passe\r\nseus ultimos dias com sua\r\nfamilia se eles ainda estiverem\r\nvivos.
+      Deixe-me afogar em minha\r\nculpa."
+    type: 1
+  - text: "AMATERASU\r\nSe amea\xE7as n\xE3o ter\xE3o efeito,\r\nescutem as minhas
+      suplicas: Por\r\nfavor, deixem-me em minha\r\nsolid\xE3o, n\xE3o h\xE1 nada
+      que eu\r\npossa fazer por voc\xEAs\r"
+    type: 1
+  - text: "AMATERASU\r\nEu n\xE3o vou sair, eu n\xE3o posso\r\nvos ajudar, eu n\xE3o
+      tenho\r\nriquezas em minha posse, eu n\xE3o\r\nquero piorar a bagun\xE7a que
+      eu\r\nfiz, n\xE3o exitem op\xE7\xF5es al\xE9m de\r\nvoltar para os seus lares\r"
+    type: 1
+  - text: "AMATERASU\r\nMortais, eu os imploro, retornem\r\na seus lares. \xC9 isso
+      que querem?\r\nUma deusa implorando por sua\r\nmisericordia? Voc\xEAs o t\xEAm,\r\nagora,
+      (A tela treme mais aqui)\r\ndeixem-me em paz!\r"
+    type: 1
+  - text: "AMATERASU\r\nVoc\xEAs sabem que n\xE3o h\xE1 nada a\r\nser feito, ent\xE3o
+      eu vos\r\npergunto: Por que? Por que se\r\nrecusam a me deixar, por seculos\r\neu
+      dei, e dei, e dei sem pedir\r\nnada em troca, agora eu imploro,\r\npela ultima
+      vez, deixem me em\r\npaz\r"
+    type: 1
+  - text: "AMATERASU\r\n\xC9 isso o que voc\xEAs tem? Um raio\r\nde luz? s\xF3?"
+    type: 1
+  - text: "AMATERASU\r\n\xC9 isso o que voc\xEAs tem? Um raio\r\nde luz? s\xF3?"
+    type: 1
