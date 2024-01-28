@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour {
 
     public PlayerMovement p1, p2;
 
+    public GameObject haikouSom, levelSom;
+
+    public bool pausado = false;
+
     void Start() {
         if (instance == null) {
             instance = this;
@@ -15,7 +19,19 @@ public class GameManager : MonoBehaviour {
         }
 
         if (RoomManager.instance.currentRoom == 0) {
+            RoomManager.instance.rodando = false;
+            pausado = true;
             UIController.instance.ShowHaikou("Apenas um de nós pode sair daqui", UIController.HaikouType.One);
+            haikouSom.SetActive(true);
+
+            UIController.instance.onEndHaikou = () => {
+                haikouSom.SetActive(false);
+                levelSom.SetActive(true);
+                RoomManager.instance.rodando = true;
+                pausado = false;
+
+                UIController.instance.ShowTutorial();
+            };
         }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -67,6 +67,9 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -788,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404932231240194097, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
-      propertyPath: 'angulos.Array.data[0]'
+      propertyPath: angulos.Array.data[0]
       value: 25.346
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1064,6 +1067,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1: {fileID: 245348451}
   p2: {fileID: 374214157}
+  haikouSom: {fileID: 0}
+  levelSom: {fileID: 0}
+  pausado: 0
 --- !u!4 &525212212
 Transform:
   m_ObjectHideFlags: 0
@@ -1205,7 +1211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404932231240194097, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
-      propertyPath: 'angulos.Array.data[0]'
+      propertyPath: angulos.Array.data[0]
       value: 36.679
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1896,7 +1902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404932231240194097, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
-      propertyPath: 'angulos.Array.data[0]'
+      propertyPath: angulos.Array.data[0]
       value: -85.047
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1981,7 +1987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6060877285876185772, guid: 7343d060cd144bc48896e8600399cb73,
         type: 3}
-      propertyPath: 'angulos.Array.data[0]'
+      propertyPath: angulos.Array.data[0]
       value: -22.23
       objectReference: {fileID: 0}
     - target: {fileID: 7112078453838115220, guid: 7343d060cd144bc48896e8600399cb73,
@@ -2233,11 +2239,11 @@ LineRenderer:
   m_Positions:
   - {x: -14.1, y: 13, z: 0}
   - {x: 19.144033, y: 6.4529533, z: 0}
-  - {x: -5.0543923, y: 3.7209804, z: 0}
-  - {x: -0.794276, y: -1.5213737, z: 0}
-  - {x: -9.056615, y: -1.0329263, z: 0}
-  - {x: -4.9519634, y: 4.6324024, z: 0}
-  - {x: -3.5571918, y: 13.925058, z: 0}
+  - {x: -5.0543923, y: 3.7209806, z: 0}
+  - {x: -0.794277, y: -1.521378, z: 0}
+  - {x: -9.056615, y: -1.0329305, z: 0}
+  - {x: -4.9519815, y: 4.6323576, z: 0}
+  - {x: -3.5572128, y: 13.925058, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -2297,6 +2303,149 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &1544308482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544308485}
+  - component: {fileID: 1544308484}
+  - component: {fileID: 1544308483}
+  m_Layer: 0
+  m_Name: Som
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1544308483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544308482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a90b09088562642bddab10e4d9e164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engineStartClip: {fileID: 8300000, guid: bdcc06a5c3a6b7241aada5e21e42805e, type: 3}
+  engineLoopClip: {fileID: 8300000, guid: e4fa5ba963326b1469b4ce83c4f62d4e, type: 3}
+--- !u!82 &1544308484
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544308482}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 018539f1cdcd9ce428446a2c21e0339d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1544308485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544308482}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.4026055, y: -2.22076, z: -0.6993923}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1582858162
 GameObject:
   m_ObjectHideFlags: 0
@@ -2800,7 +2949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404932231240194097, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
-      propertyPath: 'angulos.Array.data[0]'
+      propertyPath: angulos.Array.data[0]
       value: -27.142
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2990,7 +3139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6060877285876185772, guid: 7343d060cd144bc48896e8600399cb73,
         type: 3}
-      propertyPath: 'angulos.Array.data[0]'
+      propertyPath: angulos.Array.data[0]
       value: 31.752
       objectReference: {fileID: 0}
     - target: {fileID: 7112078453838115220, guid: 7343d060cd144bc48896e8600399cb73,
@@ -3151,7 +3300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6060877285876185772, guid: 7343d060cd144bc48896e8600399cb73,
         type: 3}
-      propertyPath: 'angulos.Array.data[0]'
+      propertyPath: angulos.Array.data[0]
       value: -5.288
       objectReference: {fileID: 0}
     - target: {fileID: 7112078453838115220, guid: 7343d060cd144bc48896e8600399cb73,
@@ -3483,4 +3632,5 @@ SceneRoots:
   - {fileID: 543720457}
   - {fileID: 1334404726}
   - {fileID: 2122285034}
+  - {fileID: 1544308485}
   - {fileID: 1073486766}

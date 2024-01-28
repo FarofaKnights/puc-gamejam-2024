@@ -21,19 +21,30 @@ public class UIController : MonoBehaviour {
     float allowHaikouSkipTimerCurrent = 0.0f;
 
 
+    public GameObject tutorialPanel;
+
+    public System.Action onEndHaikou;
+
+
     void Awake() {
         instance = this;
     }
 
     void FixedUpdate() {
-        if (currentTexts == null) return;
+        if (currentTexts != null) {
 
-        allowHaikouSkipTimerCurrent -= Time.fixedDeltaTime;
+            allowHaikouSkipTimerCurrent -= Time.fixedDeltaTime;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space)) {
-            NextHaikou();
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space)) {
+                NextHaikou();
+            }
+
+        } else if (tutorialPanel.activeSelf) {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                tutorialPanel.SetActive(false);
+                GameManager.instance.pausado = false;
+            }
         }
-
 
     }
 
@@ -62,9 +73,21 @@ public class UIController : MonoBehaviour {
         if (currentTextIndex >= currentTexts.texts.Count) {
             haikouPanel.SetActive(false);
             currentTexts = null;
+
+
+            if (onEndHaikou != null) {
+                onEndHaikou();
+                onEndHaikou = null;
+            }
+
             return;
         }
 
         haikouText.text = currentTexts.texts[currentTextIndex].text;
+    }
+
+    public void ShowTutorial() {
+        tutorialPanel.SetActive(true);
+        GameManager.instance.pausado = true;
     }
 }
