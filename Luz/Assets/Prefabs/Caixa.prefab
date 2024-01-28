@@ -255,6 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   espelho: {fileID: 706545089807892392}
+  shardPrefab: {fileID: 2902385009752358140, guid: 1489dc4b677024544a4e0ce66881c3a7,
+    type: 3}
+  fallToBreak: 5
   angulos:
   - 30
   - 15

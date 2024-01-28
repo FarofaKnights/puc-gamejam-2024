@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class Porta : MonoBehaviour, Switchable {
     public GameObject porta;
+    public bool aberturaUnica = false;
+    bool podeFechar = true;
 
     void Start() {
         Desativar();
     }
 
     public void Ativar() {
-        Debug.Log("Ativando porta");
         porta.SetActive(false);
+        foreach (Transform child in transform) {
+            child.gameObject.SetActive(false);
+        }
+
+        if (aberturaUnica) podeFechar = false;
     }
 
     public void Desativar() {
-        Debug.Log("Desativando porta");
+        if (!podeFechar) return;
         porta.SetActive(true);
+        foreach (Transform child in transform) {
+            child.gameObject.SetActive(true);
+        }
     }
 
     public void Switch() {
-        porta.SetActive(!porta.activeSelf);
+        if (porta.activeSelf) {
+            Ativar();
+        } else {
+            Desativar();
+        }
     }
 }

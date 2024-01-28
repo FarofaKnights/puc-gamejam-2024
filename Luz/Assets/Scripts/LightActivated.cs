@@ -6,7 +6,6 @@ public class LightActivated : MonoBehaviour, Switchable {
     public GameObject[] connected;
 
     public void Ativar() {
-        Debug.Log("Ativando");
         foreach (GameObject s in connected) {
             Switchable sw = s.GetComponent<Switchable>();
             sw.Ativar();

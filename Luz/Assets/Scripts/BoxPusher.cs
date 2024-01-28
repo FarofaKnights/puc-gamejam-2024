@@ -11,6 +11,13 @@ public class BoxPusher : MonoBehaviour {
     public GameObject mao;
 
     void Update() {
+        if (!RoomManager.instance.rodando) {
+            if (box != null) {
+                Soltar();
+            }
+            return;
+        }
+
         if (box == null && Input.GetKeyDown(KeyCode.LeftShift)) {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactRadius, mexiveisLayer);
             if (hitColliders.Length > 0 && hitColliders[0].gameObject.tag == "Box") {

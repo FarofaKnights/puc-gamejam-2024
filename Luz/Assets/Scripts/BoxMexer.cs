@@ -7,6 +7,8 @@ public class BoxMexer : MonoBehaviour {
     public float interactRadius = 1.25f;
 
     void Update() {
+        if (!RoomManager.instance.rodando) return;
+
         if (Input.GetKeyDown(KeyCode.Space)) {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactRadius, mexiveisLayer);
             if (hitColliders.Length > 0) {

@@ -14,6 +14,11 @@ public class PlayerMovement : MonoBehaviour {
     bool jumping = false;
     public bool isSlow = false;
 
+
+    // Principio de responsabilidade fodase
+    public bool holdingShard = false;
+
+
     Vector3 moveDirection;
 
     void Start() {
@@ -26,6 +31,10 @@ public class PlayerMovement : MonoBehaviour {
 
     string UsingAlt() {
         return usingAlt ? "_alt" : "";
+    }
+
+    public void UseShard() {
+        holdingShard = false;
     }
 
     void Update() {
@@ -45,7 +54,7 @@ public class PlayerMovement : MonoBehaviour {
             if (jumping) jumping = false;
 
             if (Input.GetButton(CurrentPlayer() + "_Jump" + UsingAlt())) {
-                if (GetComponent<BoxPusher>().box != null) {
+                if (GetComponent<BoxPusher>() != null && GetComponent<BoxPusher>().box != null) {
                     GetComponent<BoxPusher>().Soltar();
                 }
 
