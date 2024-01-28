@@ -350,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 8404932231240194097, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
       propertyPath: anguloAtual
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8404932231240194097, guid: c86769241d4262241accce5179b5cb20,
         type: 3}
