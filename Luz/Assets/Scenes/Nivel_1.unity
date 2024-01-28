@@ -623,6 +623,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowMode: 0
+  p1: {fileID: 0}
+  p2: {fileID: 0}
 --- !u!4 &525212212
 Transform:
   m_ObjectHideFlags: 0
@@ -980,6 +982,7 @@ GameObject:
   - component: {fileID: 1349928557}
   - component: {fileID: 1349928556}
   - component: {fileID: 1349928555}
+  - component: {fileID: 1349928559}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -1073,6 +1076,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1349928559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349928554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91fa8fb18f2fdd846a392a2088132e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextFase: Nivel_2
 --- !u!1 &1532453362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1512,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259571003190445455, guid: f048d90a87dab1645b40e10c800a4ae3,
+        type: 3}
+      propertyPath: player
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7951822156137866165, guid: f048d90a87dab1645b40e10c800a4ae3,
         type: 3}

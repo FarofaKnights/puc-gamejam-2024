@@ -160,9 +160,10 @@ MonoBehaviour:
   usingAlt: 1
   walkSpeed: 7
   slowSpeed: 4
-  jumpForce: 7
+  jumpForce: 10
   gravity: 10
   isSlow: 0
+  holdingShard: 0
 --- !u!114 &2822000801220336922
 MonoBehaviour:
   m_ObjectHideFlags: 0
