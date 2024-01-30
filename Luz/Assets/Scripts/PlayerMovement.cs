@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     string UsingAlt() {
-        return usingAlt ? "_alt" : "";
+        return usingAlt ? "" : "";
     }
 
     public void UseShard() {
